@@ -24,7 +24,7 @@ module Gotcha
     # and compare the hash to the hash of the value
     def determine_gotcha_validity(expected_gotcha_count = 1)
       return false unless params[:gotcha_response].kind_of?(Enumerable)    
-      return false unless params[:gotcha_response].count == expected_gotcha_count
+      return false unless params[:gotcha_response].size == expected_gotcha_count
       params[:gotcha_response].all? do |ident, value|
         type, hash = ident.split '-'
         return false unless Object.const_defined?(type)
